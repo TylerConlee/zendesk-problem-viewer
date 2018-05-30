@@ -8,23 +8,24 @@
 <body>
   <div id="content"></div>  
   <script id="requester-template" type="text/x-handlebars-template">
-    <table>
+    <table class="c-table--sm">
       {{#each data}}
-          <tr>
-            <td><b>Org:</b></td>
-            <td class="data"><a href="https://circleci1504710777.zendesk.com/agent/organizations/{{id}}/tickets" target="_blank">{{name}}</a></td>
-            <td><b>MRR:</b></td>
-            <td class="data">{{mrr}}</td>
+          <tr class="c-table__row">
+            <td class="c-table__row__cell"><b>Org:</b></td>
+            <td class="data c-table__row__cell"><a href="https://circleci1504710777.zendesk.com/agent/organizations/{{id}}/tickets" target="_blank">{{name}}</a></td>
+            <td class="c-table__row__cell"><b>MRR:</b></td>
+            <td class="data c-table__row__cell">{{mrr}}</td>
           </tr>
       {{/each}}
-     
+      <tr class="c-table__row">
+          <td class="c-table__row__cell" colspan=3><b>Total Customer Count:</b></td>
+          <td class="data c-table__row__cell">{{totalcustomer}}</td>
+      </tr>
+      <tr class="c-table__row">
+          <td class="c-table__row__cell" colspan=3><b>Total MRR:</b></td>
+          <td class="data c-table__row__cell">{{totalmrr}}</td>
+      </tr>
 
-    </table>
-    <table>
-        <tr>
-            <td><b>Total MRR:</b></td>
-            <td class="data">{{totalmrr}}</td>
-          </tr>
     </table>
   </script>
   <script id="non-problem-template" type="text/x-handlebars-template">

@@ -2,7 +2,8 @@ var orgs = [];
 $(function() {
     // Initialise the Zendesk JavaScript API client
     // https://developer.zendesk.com/apps/docs/apps-v2
-    var client = ZAFClient.init();
+	var client = ZAFClient.init();
+	client.invoke('resize', { width: '100%', height: '200px' });
     client.get('ticket.type').then(function(data) {
       	if (data['ticket.type'] === 'problem') {
         	client.get('ticket.id').then(function(data) {
@@ -73,6 +74,7 @@ function showInfo(data) {
   	var templatedata = {
     	'data': data,
 		'totalmrr': total,
+		'totalcustomer': data.length,
   	};
   	console.log(templatedata)
   	var source = $("#requester-template").html();
