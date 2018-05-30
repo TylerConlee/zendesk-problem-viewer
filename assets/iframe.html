@@ -11,18 +11,24 @@
     <table>
       {{#each data}}
           <tr>
-            <td>Org:</td>
-            <td class="data">{{name}}</td>
-            <td>MRR:</td>
+            <td><b>Org:</b></td>
+            <td class="data"><a href="https://circleci1504710777.zendesk.com/agent/organizations/{{id}}/tickets" target="_blank">{{name}}</a></td>
+            <td><b>MRR:</b></td>
             <td class="data">{{mrr}}</td>
           </tr>
       {{/each}}
-      <tr>
-          <td>Total MRR:</td>
-          <td class="data">{{totalmrr}}</td>
-        </tr>
+     
 
     </table>
+    <table>
+        <tr>
+            <td><b>Total MRR:</b></td>
+            <td class="data">{{totalmrr}}</td>
+          </tr>
+    </table>
+  </script>
+  <script id="non-problem-template" type="text/x-handlebars-template">
+    <p>Problem Ticket Summary only works on Problem Tickets.</p>
   </script>
   <script id="error-template" type="text/x-handlebars-template">
     <p>{{status}} - {{statusText}}. Please report a bug at the link below.</p>

@@ -1,12 +1,14 @@
 .data {
-    color: #363;
+    color: #3094a3;
     padding-left: 6px;
 }
 #content td {
 	font-size: 12px;
-	padding-top: 2px;
+    padding-top: 2px;
+    padding-right: 14px;
 }
 footer {
     font-size: 10px;
     padding-top: 20px;
+    text-align: center;
 }

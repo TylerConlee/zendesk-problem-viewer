@@ -12,7 +12,12 @@ $(function() {
       		function(response) {
         		showError(response);
       		});
-      	}
+      	} else {
+			var source = $("#non-problem-template").html();
+			var template = Handlebars.compile(source);
+			var html = template();
+			$("#content").html(html);
+		}	
     });
 });
 
@@ -28,12 +33,13 @@ function getIncidents(ticket){
 			var org = new Object();
 			n = getOrgName(ticket.organization_id).then(function(name){return name}).then(name => {
 				org.name = name;
-				console.log(org.name)
-				var i = ticket.custom_fields.findIndex( (el) => el.id === 80756047);
+				
+			});
+			var i = ticket.custom_fields.findIndex( (el) => el.id === 80756047);
 				org.mrr = ticket.custom_fields[i].value;
+				org.id = ticket.organization_id;
 				orgs.push(org)
 				return name
-			});
 		});
 		return orgs
   	}).finally(function(){
@@ -66,7 +72,7 @@ function showInfo(data) {
   	});
   	var templatedata = {
     	'data': data,
-    	'totalmrr': total,
+		'totalmrr': total,
   	};
   	console.log(templatedata)
   	var source = $("#requester-template").html();
