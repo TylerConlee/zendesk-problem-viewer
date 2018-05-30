@@ -37,9 +37,8 @@ function getIncidents(ticket){
 		});
 		return orgs
   	}).finally(function(){
-		setTimeout(function(){
-		showInfo(orgs)
-	});
+		setTimeout(checkOrgFinished, 1000);
+		
   	},function(response) {
     	showError(response);
   	});
@@ -86,3 +85,11 @@ function showError() {
   	var html = template(error_data);
   	$("#content").html(html);
 }
+
+function checkOrgFinished() {
+
+	if (orgs[0].name != "") {
+		showInfo(orgs)
+	}
+  }
+ 
