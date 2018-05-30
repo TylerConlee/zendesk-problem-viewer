@@ -9,14 +9,18 @@
   <div id="content"></div>  
   <script id="requester-template" type="text/x-handlebars-template">
     <table>
+      {{#each data}}
+          <tr>
+            <td>Org:</td>
+            <td class="data">{{name}}</td>
+            <td>MRR:</td>
+            <td class="data">{{mrr}}</td>
+          </tr>
+      {{/each}}
       <tr>
-        <td>Customers:</td>
-        <td class="data">{{#each organization}}{{this}} {{/each}}</td>
-      </tr>
-      <tr>
-        <td>Total MRR:</td>
-        <td class="data">{{mrr}}</td>
-      </tr>
+          <td>Total MRR:</td>
+          <td class="data">{{totalmrr}}</td>
+        </tr>
 
     </table>
   </script>
