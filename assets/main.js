@@ -30,13 +30,15 @@ function getIncidents(ticket){
 		dataType: 'json'
   	};
   	client.request(fetchSelf).then(function(data) {
+
     	data.tickets.forEach(function(ticket){
 			var org = new Object();
 			n = getOrgName(ticket.organization_id).then(function(name){return name}).then(name => {
 				org.name = name;
 				
 			});
-			var i = ticket.custom_fields.findIndex( (el) => el.id === 80756047);
+			
+			var i = ticket.custom_fields.findIndex( (el) => el.id === 32535468);
 				org.mrr = ticket.custom_fields[i].value;
 				org.id = ticket.organization_id;
 				orgs.push(org)
@@ -68,8 +70,10 @@ function getOrgName(id){
 function showInfo(data) {
 	  var total = 0;
   	data.forEach(function(m) {
-    	total = parseInt(m.mrr)+total;
-  	});
+		if (m.mrr != null) {
+			total = parseInt(m.mrr)+total;
+		}
+	  });
   	var templatedata = {
     	'data': data,
 		'totalmrr': total,
