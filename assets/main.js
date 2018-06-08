@@ -42,6 +42,9 @@ function getIncidents(ticket){
 			});
 			
 			var i = ticket.custom_fields.findIndex( (el) => el.id === 32535468);
+			var url = new URL(window.location.href);
+			var c = url.searchParams.get("origin");				
+			org.url = c;
 				org.mrr = ticket.custom_fields[i].value;
 				org.id = ticket.organization_id;
 				orgs.push(org)
@@ -78,11 +81,11 @@ function showInfo(data) {
 			total = parseInt(m.mrr)+total;
 		}
 	  });
+	
   	var templatedata = {
     	'data': data,
 		'totalmrr': total,
 		'totalcustomer': data.length,
-		'url': window.location.host,
   	};
   	var source = $("#requester-template").html();
   	var template = Handlebars.compile(source);
