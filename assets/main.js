@@ -6,6 +6,7 @@ $(function() {
 	client.invoke('resize', { width: '100%', height: '200px' });
     client.get('ticket.type').then(function(data) {
       	if (data['ticket.type'] === 'problem') {
+			client.invoke('show')
         	client.get('ticket.id').then(function(data) {
           		var ticket = data['ticket.id'];
           		getIncidents(ticket)
@@ -14,10 +15,12 @@ $(function() {
         		showError(response);
       		});
       	} else {
+			
 			var source = $("#non-problem-template").html();
 			var template = Handlebars.compile(source);
 			var html = template();
 			$("#content").html(html);
+			client.invoke('hide')
 		}	
     });
 });
@@ -70,7 +73,8 @@ function getOrgName(id){
 function showInfo(data) {
 	  var total = 0;
   	data.forEach(function(m) {
-		if (m.mrr != null) {
+		t = parseInt(m.mrr);
+		if ((m.mrr != null) && (t > 0)){
 			total = parseInt(m.mrr)+total;
 		}
 	  });
