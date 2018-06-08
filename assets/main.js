@@ -71,7 +71,7 @@ function getOrgName(id){
 
 
 function showInfo(data) {
-	  var total = 0;
+	var total = 0;
   	data.forEach(function(m) {
 		t = parseInt(m.mrr);
 		if ((m.mrr != null) && (t > 0)){
@@ -82,6 +82,7 @@ function showInfo(data) {
     	'data': data,
 		'totalmrr': total,
 		'totalcustomer': data.length,
+		'url': window.location.host,
   	};
   	var source = $("#requester-template").html();
   	var template = Handlebars.compile(source);
