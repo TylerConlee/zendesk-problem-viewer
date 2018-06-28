@@ -33,22 +33,22 @@ function getIncidents(ticket){
 		dataType: 'json'
   	};
   	client.request(fetchSelf).then(function(data) {
-
     	data.tickets.forEach(function(ticket){
 			var org = new Object();
-			n = getOrgName(ticket.organization_id).then(function(name){return name}).then(name => {
-				org.name = name;
-				
-			});
-			
+			if (Number.isInteger(ticket.organization_id)) {
+				n = getOrgName(ticket.organization_id).then(function(name){return name}).then(name => {
+					org.name = name;
+					
+				});
+			}
 			var i = ticket.custom_fields.findIndex( (el) => el.id === 32535468);
 			var url = new URL(window.location.href);
 			var c = url.searchParams.get("origin");				
 			org.url = c;
-				org.mrr = ticket.custom_fields[i].value;
-				org.id = ticket.organization_id;
-				orgs.push(org)
-				return name
+			org.mrr = ticket.custom_fields[i].value;
+			org.id = ticket.organization_id;
+			orgs.push(org)
+			return name
 		});
 		return orgs
   	}).finally(function(){
