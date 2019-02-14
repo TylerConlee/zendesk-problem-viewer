@@ -6,6 +6,7 @@ This is a Zendesk App that shows the summary of associated tickets marked as Inc
 
 * Number of Organizations
 * Names of Organizations
+* Associated Ticket
 * Total Combined MRR
 
 Please submit bug reports to [the Issues page](https://github.com/TylerConlee/zendesk-problem-viewer/issues). Pull requests are welcome.
