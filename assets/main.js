@@ -46,7 +46,8 @@ function getIncidents(ticket){
 			var c = url.searchParams.get("origin");				
 			org.url = c;
 			org.mrr = ticket.custom_fields[i].value;
-			org.id = ticket.organization_id;
+      org.id = ticket.organization_id;
+      org.ticketID = ticket.id;
 			orgs.push(org)
 			return name
 		});
